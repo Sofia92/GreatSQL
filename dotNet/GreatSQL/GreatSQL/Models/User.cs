@@ -20,12 +20,17 @@ namespace GreatSQL.Models
         /// <summary>
         /// 用户名，作为昵称，不用于登录
         /// </summary>
-        public string UserName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// 登录密码
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// 所属权限组 ID
+        /// </summary>
+        public int RuleGroupID { get; set; }
 
         /// <summary>
         /// 所属权限组

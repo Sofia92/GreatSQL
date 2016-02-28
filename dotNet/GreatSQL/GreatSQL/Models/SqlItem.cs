@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace GreatSQL.Models
+{
+    /// <summary>
+    /// 表示一次 SQL 记录
+    /// </summary>
+    public class SqlItem
+    {
+        public int ID { get; set; }
+
+        /// <summary>
+        /// SQL 语句的主体
+        /// </summary>
+        public string Body { get; set; }
+
+        /// <summary>
+        /// 受影响的行数
+        /// </summary>
+        public int Record { get; set; }
+
+        /// <summary>
+        /// 失败或其他信息
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime Created { get; set; }
+
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        public User Creater { get; set; }
+
+        /// <summary>
+        /// 运行时间
+        /// </summary>
+        public DateTime RunTime { get; set; }
+
+        /// <summary>
+        /// 运行消耗时间
+        /// </summary>
+        public TimeSpan ElapsedTime { get; set; }
+
+        /// <summary>
+        /// 运行人
+        /// </summary>
+        public User Runner { get; set; }
+    }
+}

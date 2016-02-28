@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GreatSQL.Models
+namespace GreatSQL.Enums
 {
     /// <summary>
     /// 权限码

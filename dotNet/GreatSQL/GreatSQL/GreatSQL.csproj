@@ -99,9 +99,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GreatSQLContext.cs" />
     <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\Rule.cs" />
+    <Compile Include="Enums\Rule.cs" />
+    <Compile Include="Models\SqlItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
