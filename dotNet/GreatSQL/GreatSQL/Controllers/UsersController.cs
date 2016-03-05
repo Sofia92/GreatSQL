@@ -24,7 +24,7 @@ namespace GreatSQL.Controllers
         }
 
         // GET: api/Users/5
-        [IdentityBasicAuthentication]
+        [BasicAuthentication]
         [ResponseType(typeof(User))]
         [Authorize]
         public IHttpActionResult GetUser(int id)
