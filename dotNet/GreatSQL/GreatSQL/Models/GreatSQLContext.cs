@@ -22,5 +22,7 @@ namespace GreatSQL.Models
         public System.Data.Entity.DbSet<GreatSQL.Models.Group> Groups { get; set; }
 
         public System.Data.Entity.DbSet<GreatSQL.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<GreatSQL.Models.SqlItem> SqlItems { get; set; }
     }
 }

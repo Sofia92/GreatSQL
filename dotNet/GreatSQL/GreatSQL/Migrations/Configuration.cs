@@ -1,5 +1,6 @@
 namespace GreatSQL.Migrations
 {
+    using Enums;
     using Models;
     using System;
     using System.Data.Entity;
