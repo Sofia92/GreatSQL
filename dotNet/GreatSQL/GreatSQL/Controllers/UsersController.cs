@@ -12,6 +12,7 @@ using GreatSQL.Models;
 
 namespace GreatSQL.Controllers
 {
+    [Authorize]
     public class UsersController : ApiController
     {
         private GreatSQLContext db = new GreatSQLContext();
