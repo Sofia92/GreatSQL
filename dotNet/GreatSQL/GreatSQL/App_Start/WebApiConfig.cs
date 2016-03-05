@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using GreatSQL.Filters;
 
 namespace GreatSQL
 {
@@ -20,7 +21,7 @@ namespace GreatSQL
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //config.Filters.Add(new IdentityBasicAuthenticationAttribute());
+            config.Filters.Add(new IdentityBasicAuthenticationAttribute());
         }
     }
 }

@@ -8,11 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using GreatSQL.Filters;
 using GreatSQL.Models;
 
 namespace GreatSQL.Controllers
 {
-    [Authorize]
     public class UsersController : ApiController
     {
         private GreatSQLContext db = new GreatSQLContext();
@@ -24,7 +24,9 @@ namespace GreatSQL.Controllers
         }
 
         // GET: api/Users/5
+        [IdentityBasicAuthentication]
         [ResponseType(typeof(User))]
+        [Authorize]
         public IHttpActionResult GetUser(int id)
         {
             User user = db.Users.Find(id);
