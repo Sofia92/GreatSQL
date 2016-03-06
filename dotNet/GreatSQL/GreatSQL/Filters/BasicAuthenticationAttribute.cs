@@ -1,10 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,7 +13,6 @@ namespace GreatSQL.Filters
 {
     public class BasicAuthenticationAttribute : Attribute, IAuthenticationFilter
     {
-
         public bool AllowMultiple => false;
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
@@ -24,15 +20,18 @@ namespace GreatSQL.Filters
             var request = context.Request;
             var authorization = request.Headers.Authorization;
 
+            // 如果没认证信息，或类型不同，放弃
             if (authorization == null || authorization.Scheme != "Basic")
                 return;
 
+            // 没有认证参数~ 放弃
             if (string.IsNullOrEmpty(authorization.Parameter))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
                 return;
             }
 
+            // 解析用户名密码失败~ 放弃
             var userNameAndPasword = ExtractUserNameAndPassword(authorization.Parameter);
             if (userNameAndPasword == null)
             {
@@ -43,6 +42,7 @@ namespace GreatSQL.Filters
             var email = userNameAndPasword.Item1;
             var password = userNameAndPasword.Item2;
 
+            // 查询登录的用户是谁
             var db = new GreatSQLContext();
             var userQuery = from u in db.Users
                 where u.Email == email && u.Password == password
@@ -50,6 +50,7 @@ namespace GreatSQL.Filters
 
             var user = await userQuery.FirstOrDefaultAsync(cancellationToken);
             
+            // 找不到？放弃
             if (user == null)
             {
                 context.ErrorResult = new AuthenticationFailureResult("Invalid username or password", request);
@@ -58,13 +59,15 @@ namespace GreatSQL.Filters
 
             // var a = new ClaimsPrincipal(new[] { new ClaimsIdentity(new [] { new Claim(ClaimTypes.Name, user.Name) }, "Basic") });
 
+            // 最终认证成功，记录授权和认证信息
             context.Principal = new SimplePrincipal
             {
                 Identity = new SimpleIdentity
                 {
                     Name = user.Email,
                     AuthenticationType = "Basic",
-                    IsAuthenticated = true
+                    IsAuthenticated = true,
+                    User = user
                 }
             };
         }

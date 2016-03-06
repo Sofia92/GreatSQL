@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using GreatSQL.Filters;
 using GreatSQL.Models;
+using Rule = GreatSQL.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
@@ -24,9 +25,8 @@ namespace GreatSQL.Controllers
         }
 
         // GET: api/Users/5
-        [BasicAuthentication]
         [ResponseType(typeof(User))]
-        [Authorize]
+        [BasicAuthentication, RuleAuthorization(Rule.User)]
         public IHttpActionResult GetUser(int id)
         {
             User user = db.Users.Find(id);

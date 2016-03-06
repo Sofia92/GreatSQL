@@ -97,6 +97,7 @@
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\SqlItemsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\RuleAuthorizationAttribute.cs" />
     <Compile Include="Results\AuthenticationFailureResult.cs" />
     <Compile Include="Filters\BasicAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
