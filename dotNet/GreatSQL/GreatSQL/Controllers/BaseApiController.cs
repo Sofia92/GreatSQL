@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using GreatSQL.Enums;
 using GreatSQL.Filters;
 using GreatSQL.Models;
 using GreatSQL.Results;
@@ -25,5 +26,7 @@ namespace GreatSQL.Controllers
         }
 
         protected new User User => Identity?.User;
+
+        protected Rule UserRule => (Rule) User.RuleGroup.Rule;
     }
 }

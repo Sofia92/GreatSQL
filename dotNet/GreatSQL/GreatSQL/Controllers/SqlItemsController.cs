@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GreatSQL.Filters;
@@ -26,11 +27,16 @@ namespace GreatSQL.Controllers
 
         // GET: api/SqlItems
         [RuleAuthorization(Rule.ReadLog)]
-        public IQueryable<SqlItem> GetSqlItems(int creater)
+        public IHttpActionResult GetSqlItems(int creater)
         {
-            return from item in db.SqlItems
-                where item.Creater.ID == creater
-                select item;
+            // 权限检查
+            if (User.ID != creater) return Unauthorized();
+
+            var items = from item in db.SqlItems
+                        where item.Creater.ID == creater
+                        select item;
+
+            return Ok(items);
         }
 
         // GET: api/SqlItems/5
@@ -44,6 +50,10 @@ namespace GreatSQL.Controllers
             {
                 return NotFound();
             }
+
+            // 权限检查
+            if ((UserRule & Rule.ReadLog) > 0 && sqlItem.Creater_ID != User.ID)
+                return Unauthorized();
 
             sqlItem.Creater = db.Users.Find(sqlItem.Creater_ID);
 
