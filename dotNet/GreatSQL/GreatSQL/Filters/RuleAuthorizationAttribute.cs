@@ -34,15 +34,24 @@ namespace GreatSQL.Filters
 
             var id = simplePrincipal.Identity as SimpleIdentity;
 
+            if (id == null)
+                return new HttpResponseMessage(HttpStatusCode.Unauthorized) {ReasonPhrase = "No Authentication"};
+
             var db = new GreatSQLContext();
 
             var ruleGroup = await db.Groups.FindAsync(cancellationToken, id.User.RuleGroupID);
 
+            // 更新认证数据
+            id.User.RuleGroup = ruleGroup;
+
             var userRule = (Rule)ruleGroup.Rule;
 
-            return (userRule & Rule) == userRule
-                ? await continuation() 
-                : new HttpResponseMessage(HttpStatusCode.Unauthorized) { ReasonPhrase = "Unauthorized Group" };
+            if ((userRule & Rule) == 0)
+                return new HttpResponseMessage(HttpStatusCode.Unauthorized) { ReasonPhrase = "Unauthorized Group" };
+
+            var responseMessage = await continuation();
+
+            return responseMessage;
         }
 
         public bool AllowMultiple => false;

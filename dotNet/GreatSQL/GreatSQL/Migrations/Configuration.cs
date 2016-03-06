@@ -19,8 +19,8 @@ namespace GreatSQL.Migrations
             context.Groups.AddOrUpdate(
                 g => g.ID,
                 new Group() { ID = 1, Name = "Admin", Rule = (int)(Rule.User) },
-                new Group() { ID = 2, Name = "DBA", Rule = (int)(Rule.CreateSql | Rule.ReadLog | Rule.RunSql) },
-                new Group() { ID = 3, Name = "Default", Rule = (int)(Rule.CreateSql) }
+                new Group() { ID = 2, Name = "DBA", Rule = (int)(Rule.CreateSql | Rule.ReadAllLog | Rule.RunSql) },
+                new Group() { ID = 3, Name = "Default", Rule = (int)(Rule.CreateSql | Rule.ReadLog) }
             );
 
             context.Users.AddOrUpdate(

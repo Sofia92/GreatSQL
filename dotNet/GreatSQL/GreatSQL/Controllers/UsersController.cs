@@ -83,26 +83,12 @@ namespace GreatSQL.Controllers
                 return BadRequest(ModelState);
             }
 
+            user.ID = db.Users.Any() ? db.Users.Max(i => i.ID) + 1 : 1;
+
             db.Users.Add(user);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = user.ID }, user);
-        }
-
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            db.Users.Remove(user);
-            db.SaveChanges();
-
-            return Ok(user);
         }
 
         protected override void Dispose(bool disposing)

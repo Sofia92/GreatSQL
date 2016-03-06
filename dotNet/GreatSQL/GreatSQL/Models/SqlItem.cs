@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,7 @@ namespace GreatSQL.Models
         /// <summary>
         /// 受影响的行数
         /// </summary>
-        public int Record { get; set; }
+        public int? Record { get; set; }
 
         /// <summary>
         /// 失败或其他信息
@@ -35,21 +36,27 @@ namespace GreatSQL.Models
         /// <summary>
         /// 创建人
         /// </summary>
+        [ForeignKey("Creater_ID")]
         public User Creater { get; set; }
 
         /// <summary>
         /// 运行时间
         /// </summary>
-        public DateTime RunTime { get; set; }
+        public DateTime? RunTime { get; set; }
 
         /// <summary>
         /// 运行消耗时间
         /// </summary>
-        public TimeSpan ElapsedTime { get; set; }
+        public TimeSpan? ElapsedTime { get; set; }
 
         /// <summary>
         /// 运行人
         /// </summary>
+        [ForeignKey("Runner_ID")]
         public User Runner { get; set; }
+        
+        public int Creater_ID { get; set; }
+        
+        public int? Runner_ID { get; set; }
     }
 }

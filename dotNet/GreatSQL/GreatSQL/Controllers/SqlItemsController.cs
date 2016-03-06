@@ -10,39 +10,49 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using GreatSQL.Filters;
 using GreatSQL.Models;
+using static System.String;
 using Rule = GreatSQL.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
-    [BasicAuthentication]
-    public class SqlItemsController : ApiController
+    public class SqlItemsController : BaseApiController
     {
-        private GreatSQLContext db = new GreatSQLContext();
-
         // GET: api/SqlItems
-        [RuleAuthorization(Rule.ReadLog)]
+        [RuleAuthorization(Rule.ReadAllLog)]
         public IQueryable<SqlItem> GetSqlItems()
         {
             return db.SqlItems;
         }
 
+        // GET: api/SqlItems
+        [RuleAuthorization(Rule.ReadLog)]
+        public IQueryable<SqlItem> GetSqlItems(int creater)
+        {
+            return from item in db.SqlItems
+                where item.Creater.ID == creater
+                select item;
+        }
+
         // GET: api/SqlItems/5
         [ResponseType(typeof(SqlItem))]
-        [RuleAuthorization(Rule.ReadLog)]
+        [RuleAuthorization(Rule.ReadLog | Rule.ReadAllLog)]
         public IHttpActionResult GetSqlItem(int id)
         {
-            SqlItem sqlItem = db.SqlItems.Find(id);
+            var sqlItem = db.SqlItems.Find(id);
+
             if (sqlItem == null)
             {
                 return NotFound();
             }
+
+            sqlItem.Creater = db.Users.Find(sqlItem.Creater_ID);
 
             return Ok(sqlItem);
         }
 
         // PUT: api/SqlItems/5
         [ResponseType(typeof(void))]
-        [RuleAuthorization(Rule.CreateSql)]
+        [RuleAuthorization(Rule.CreateSql | Rule.UpdateSql)]
         public IHttpActionResult PutSqlItem(int id, SqlItem sqlItem)
         {
             if (!ModelState.IsValid)
@@ -86,27 +96,16 @@ namespace GreatSQL.Controllers
                 return BadRequest(ModelState);
             }
 
+            sqlItem.ID = db.SqlItems.Any() ? db.SqlItems.Max(i => i.ID) + 1 : 1;
+            sqlItem.Record = 0;
+            sqlItem.Message = Empty;
+            sqlItem.Creater = User;
+            sqlItem.Created = DateTime.Now;
+
             db.SqlItems.Add(sqlItem);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = sqlItem.ID }, sqlItem);
-        }
-
-        // DELETE: api/SqlItems/5
-        [ResponseType(typeof(SqlItem))]
-        [RuleAuthorization(Rule.CreateSql)]
-        public IHttpActionResult DeleteSqlItem(int id)
-        {
-            SqlItem sqlItem = db.SqlItems.Find(id);
-            if (sqlItem == null)
-            {
-                return NotFound();
-            }
-
-            db.SqlItems.Remove(sqlItem);
-            db.SaveChanges();
-
-            return Ok(sqlItem);
         }
 
         protected override void Dispose(bool disposing)
