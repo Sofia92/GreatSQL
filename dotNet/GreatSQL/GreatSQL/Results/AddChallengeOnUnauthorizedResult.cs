@@ -30,13 +30,13 @@ namespace GreatSQL.Results
 
         public async Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            // 先执行内部查询
+            // 执行
             var response = await InnerResult.ExecuteAsync(cancellationToken);
 
-            // 如果不是未授权的，则通过
+            // 已授权，通过
             if (response.StatusCode != HttpStatusCode.Unauthorized) return response;
             
-            // Only add one challenge per authentication scheme.
+            // 未授权，检查是否存在 Challenge，没有则追加
             if (response.Headers.WwwAuthenticate.All(h => h.Scheme != Challenge.Scheme))
                 response.Headers.WwwAuthenticate.Add(Challenge);
             

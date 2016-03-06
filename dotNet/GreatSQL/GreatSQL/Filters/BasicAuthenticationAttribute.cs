@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -41,7 +43,13 @@ namespace GreatSQL.Filters
             var email = userNameAndPasword.Item1;
             var password = userNameAndPasword.Item2;
 
-            var user = await new GreatSQLContext().Users.FindAsync(cancellationToken, email, password);
+            var db = new GreatSQLContext();
+            var userQuery = from u in db.Users
+                where u.Email == email && u.Password == password
+                select u;
+
+            var user = await userQuery.FirstOrDefaultAsync(cancellationToken);
+            
             if (user == null)
             {
                 context.ErrorResult = new AuthenticationFailureResult("Invalid username or password", request);
