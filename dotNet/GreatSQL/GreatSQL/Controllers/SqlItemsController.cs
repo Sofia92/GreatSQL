@@ -8,15 +8,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using GreatSQL.Filters;
 using GreatSQL.Models;
+using Rule = GreatSQL.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
+    [BasicAuthentication]
     public class SqlItemsController : ApiController
     {
         private GreatSQLContext db = new GreatSQLContext();
 
         // GET: api/SqlItems
+        [RuleAuthorization(Rule.ReadLog)]
         public IQueryable<SqlItem> GetSqlItems()
         {
             return db.SqlItems;
@@ -24,6 +28,7 @@ namespace GreatSQL.Controllers
 
         // GET: api/SqlItems/5
         [ResponseType(typeof(SqlItem))]
+        [RuleAuthorization(Rule.ReadLog)]
         public IHttpActionResult GetSqlItem(int id)
         {
             SqlItem sqlItem = db.SqlItems.Find(id);
@@ -37,6 +42,7 @@ namespace GreatSQL.Controllers
 
         // PUT: api/SqlItems/5
         [ResponseType(typeof(void))]
+        [RuleAuthorization(Rule.CreateSql)]
         public IHttpActionResult PutSqlItem(int id, SqlItem sqlItem)
         {
             if (!ModelState.IsValid)
@@ -72,6 +78,7 @@ namespace GreatSQL.Controllers
 
         // POST: api/SqlItems
         [ResponseType(typeof(SqlItem))]
+        [RuleAuthorization(Rule.CreateSql)]
         public IHttpActionResult PostSqlItem(SqlItem sqlItem)
         {
             if (!ModelState.IsValid)
@@ -87,6 +94,7 @@ namespace GreatSQL.Controllers
 
         // DELETE: api/SqlItems/5
         [ResponseType(typeof(SqlItem))]
+        [RuleAuthorization(Rule.CreateSql)]
         public IHttpActionResult DeleteSqlItem(int id)
         {
             SqlItem sqlItem = db.SqlItems.Find(id);

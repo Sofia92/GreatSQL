@@ -14,6 +14,8 @@ using Rule = GreatSQL.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
+    [BasicAuthentication]
+    [RuleAuthorization(Rule.User)]
     public class UsersController : ApiController
     {
         private GreatSQLContext db = new GreatSQLContext();
@@ -26,7 +28,6 @@ namespace GreatSQL.Controllers
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        [BasicAuthentication, RuleAuthorization(Rule.User)]
         public IHttpActionResult GetUser(int id)
         {
             User user = db.Users.Find(id);

@@ -8,10 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using GreatSQL.Filters;
 using GreatSQL.Models;
+using Rule = GreatSQL.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
+    [BasicAuthentication]
+    [RuleAuthorization(Rule.User)]
     public class GroupsController : ApiController
     {
         private GreatSQLContext db = new GreatSQLContext();
