@@ -9,6 +9,10 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "GreatSQL.Front", "GreatSQL.
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "GreatSQL5", "GreatSQL5\GreatSQL5.xproj", "{838C5B1B-0C0D-47EB-ADC3-5A8AC0E30E4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatSQL.SQLServer", "GreatSQL.SQLServer\GreatSQL.SQLServer.csproj", "{F1E35242-575B-4BB3-8E14-DF9CA1BE98A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreatSQL.Models", "GreatSQL.Models\GreatSQL.Models.csproj", "{4035D4C8-F341-4DCB-8D57-57B05A793C40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{838C5B1B-0C0D-47EB-ADC3-5A8AC0E30E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838C5B1B-0C0D-47EB-ADC3-5A8AC0E30E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{838C5B1B-0C0D-47EB-ADC3-5A8AC0E30E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1E35242-575B-4BB3-8E14-DF9CA1BE98A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1E35242-575B-4BB3-8E14-DF9CA1BE98A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1E35242-575B-4BB3-8E14-DF9CA1BE98A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1E35242-575B-4BB3-8E14-DF9CA1BE98A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4035D4C8-F341-4DCB-8D57-57B05A793C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4035D4C8-F341-4DCB-8D57-57B05A793C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4035D4C8-F341-4DCB-8D57-57B05A793C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4035D4C8-F341-4DCB-8D57-57B05A793C40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

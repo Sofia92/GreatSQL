@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using GreatSQL.Enums;
+﻿using System.Web.Http;
 using GreatSQL.Filters;
 using GreatSQL.Models;
+using GreatSQL.Models.Enums;
 using GreatSQL.Results;
 
 namespace GreatSQL.Controllers

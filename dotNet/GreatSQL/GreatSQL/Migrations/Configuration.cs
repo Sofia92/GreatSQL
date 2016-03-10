@@ -1,11 +1,8 @@
 namespace GreatSQL.Migrations
 {
-    using Enums;
     using Models;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
+    using GreatSQL.Models.Enums;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GreatSQL.Models.GreatSQLContext>
     {

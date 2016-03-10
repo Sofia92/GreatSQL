@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GreatSQL.Filters;
 using GreatSQL.Models;
-using static System.String;
-using Rule = GreatSQL.Enums.Rule;
+using GreatSQL.Models.Enums;
 
 namespace GreatSQL.Controllers
 {
     public class SqlItemsController : BaseApiController
     {
+        private const string Insert = "INSERT";
+
+        private const string Delete = "DELETE";
+
+        private const string Update = "UPDATE";
+
         // GET: api/SqlItems
         [RuleAuthorization(Rule.ReadAllLog)]
         public IQueryable<SqlItem> GetSqlItems()
@@ -108,7 +109,7 @@ namespace GreatSQL.Controllers
 
             sqlItem.ID = db.SqlItems.Any() ? db.SqlItems.Max(i => i.ID) + 1 : 1;
             sqlItem.Record = 0;
-            sqlItem.Message = Empty;
+            sqlItem.Message = string.Empty;
             sqlItem.Creater = User;
             sqlItem.Created = DateTime.Now;
 
@@ -116,6 +117,22 @@ namespace GreatSQL.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = sqlItem.ID }, sqlItem);
+        }
+
+        [RuleAuthorization(Rule.RunSql)]
+        public IHttpActionResult PostRunSqlItem(int id)
+        {
+            var sqlItem = db.SqlItems.Find(id);
+
+            if (sqlItem == null)
+                return NotFound();
+
+            
+            
+
+
+
+            return Ok(1);
         }
 
         protected override void Dispose(bool disposing)

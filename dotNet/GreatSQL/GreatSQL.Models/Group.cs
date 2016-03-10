@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace GreatSQL.Models
+﻿namespace GreatSQL.Models
 {
     /// <summary>
     /// 用于表示权限分组
@@ -18,7 +13,7 @@ namespace GreatSQL.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// 权限值，需要与 <see cref="Models.Rule"/> 枚举比较
+        /// 权限值，需要与 <see cref="Enums.Rule"/> 枚举比较
         /// </summary>
         public int Rule { get; set; } 
     }

@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GreatSQL.Filters;
 using GreatSQL.Models;
-using Rule = GreatSQL.Enums.Rule;
+using Rule = GreatSQL.Models.Enums.Rule;
 
 namespace GreatSQL.Controllers
 {
-    [BasicAuthentication]
     [RuleAuthorization(Rule.User)]
-    public class UsersController : ApiController
+    public class UsersController : BaseApiController
     {
-        private GreatSQLContext db = new GreatSQLContext();
-
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {

@@ -110,10 +110,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GreatSQLContext.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Enums\Rule.cs" />
-    <Compile Include="Models\SqlItem.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Results\SimpleIdentity.cs" />
@@ -127,6 +123,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GreatSQL.Models\GreatSQL.Models.csproj">
+      <Project>{4035d4c8-f341-4dcb-8d57-57b05a793c40}</Project>
+      <Name>GreatSQL.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GreatSQL.SQLServer\GreatSQL.SQLServer.csproj">
+      <Project>{f1e35242-575b-4bb3-8e14-df9ca1be98a7}</Project>
+      <Name>GreatSQL.SQLServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
