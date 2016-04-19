@@ -5,6 +5,9 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>GreatSQL.Front</Name>
     <RootNamespace>GreatSQL.Front</RootNamespace>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -30,9 +33,43 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.js" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap-theme.css" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap-theme.css.map" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap-theme.min.css" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap-theme.min.css.map" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap.css" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap.css.map" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap.min.css" />
+    <Content Include="site\assets\bootstrap\3.3.6\css\bootstrap.min.css.map" />
+    <Content Include="site\assets\bootstrap\3.3.6\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="site\assets\bootstrap\3.3.6\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\assets\bootstrap\3.3.6\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="site\assets\bootstrap\3.3.6\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="site\assets\bootstrap\3.3.6\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="site\dashboard.html" />
+    <Content Include="site\index.html" />
     <Content Include="package.json" />
-    <Content Include="README.md" />
+    <Content Include="site\styles\login.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="site\assets\" />
+    <Folder Include="site\assets\bootstrap\" />
+    <Folder Include="site\assets\bootstrap\3.3.6\" />
+    <Folder Include="site\assets\bootstrap\3.3.6\css\" />
+    <Folder Include="site\assets\bootstrap\3.3.6\fonts\" />
+    <Folder Include="site\assets\bootstrap\3.3.6\js\" />
+    <Folder Include="site\assets\jquery\" />
+    <Folder Include="site\assets\jquery\2.2.2\" />
+    <Folder Include="site\" />
+    <Folder Include="site\styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="site\assets\bootstrap\3.3.6\js\bootstrap.js" />
+    <Compile Include="site\assets\bootstrap\3.3.6\js\bootstrap.min.js" />
+    <Compile Include="site\assets\bootstrap\3.3.6\js\npm.js" />
+    <Compile Include="site\assets\jquery\2.2.2\jquery-2.2.2.js" />
+    <Compile Include="site\assets\jquery\2.2.2\jquery-2.2.2.min.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
