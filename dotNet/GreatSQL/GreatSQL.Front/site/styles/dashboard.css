@@ -1,2 +1,25 @@
-﻿body {
+.gs-header {
+    border-bottom: 1px solid #B5B3B3;
+    margin-bottom: 20px;
+}
+
+.row.gs-header {}
+
+.gs-menu {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.gs-menu li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.dashboard-box {margin-bottom: 20px;border-radius: 5px;padding: 10px 15px;box-shadow: 1px 1px 4px #E2E2E2;}
+
+.dashboard-box-title {
+    text-shadow: 1px 1px 1px #E6E6E6;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #D4CACA;
 }
