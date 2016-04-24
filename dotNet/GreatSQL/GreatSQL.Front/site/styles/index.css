@@ -7,8 +7,8 @@ body {
 }
 
 h3 {
-    color: #8C8C8C;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 label {
@@ -33,4 +33,5 @@ label {
 
 .login-msg {
     color: red;
+    line-height: 34px;
 }

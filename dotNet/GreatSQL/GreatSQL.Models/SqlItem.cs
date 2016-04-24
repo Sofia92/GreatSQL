@@ -25,16 +25,14 @@ namespace GreatSQL.Models
         /// </summary>
         public string Message { get; set; }
 
+        public int Creater_ID { get; set; }
+        
+        public int? Runner_ID { get; set; }
+
         /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime Created { get; set; }
-
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        [ForeignKey("Creater_ID")]
-        public User Creater { get; set; }
 
         /// <summary>
         /// 运行时间
@@ -42,7 +40,7 @@ namespace GreatSQL.Models
         public DateTime? RunTime { get; set; }
 
         /// <summary>
-        /// 运行消耗时间
+        /// 运行消耗时间 (记录的结束时间)
         /// </summary>
         public TimeSpan? ElapsedTime { get; set; }
 
@@ -52,8 +50,10 @@ namespace GreatSQL.Models
         [ForeignKey("Runner_ID")]
         public User Runner { get; set; }
         
-        public int Creater_ID { get; set; }
-        
-        public int? Runner_ID { get; set; }
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        [ForeignKey("Creater_ID")]
+        public User Creater { get; set; }
     }
 }

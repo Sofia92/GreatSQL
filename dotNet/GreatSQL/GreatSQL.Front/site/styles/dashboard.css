@@ -16,7 +16,7 @@
     margin-left: 20px;
 }
 
-.dashboard-box {margin-bottom: 20px;border-radius: 5px;padding: 10px 15px;box-shadow: 1px 1px 4px #E2E2E2;}
+.dashboard-box {margin-bottom: 20px;/* border-radius: 5px; */padding: 10px 15px;box-shadow: 0 0 6px #A09F9F;}
 
 .dashboard-box-title {
     padding-bottom: 5px;
