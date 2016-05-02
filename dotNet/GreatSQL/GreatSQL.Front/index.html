@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Great SQL</title>
+  <base href="/">
+
+  <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap-theme.css" type="text/css"/>
+  <link rel="stylesheet" href="styles/index.css" type="text/css"/>
+
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
+  <script>
+     System.config({ packages: { dist: { format: 'register', defaultExtension: 'js' } } });
+     System.import('dist/main').then(null, console.error.bind(console));
+  </script>
+</head>
+<body>
+  <app class="gs-com">
+    Loading...
+  </app>
+</body>
+</html>

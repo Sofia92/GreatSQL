@@ -1,6 +1,16 @@
+
+/* html height reset */
+
 html, body {
     height: 100%;
 }
+
+.gs-com {
+  display: block;
+  height: 100%;
+}
+
+/* page style */
 
 body {
     background: #EFEFEF;
