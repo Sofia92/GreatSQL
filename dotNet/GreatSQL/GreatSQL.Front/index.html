@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap-theme.css" type="text/css"/>
-  <link rel="stylesheet" href="styles/index.css" type="text/css"/>
+  <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 
   <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
   <script src="node_modules/systemjs/dist/system.src.js"></script>
@@ -17,12 +17,14 @@
 
   <script>
      System.config({ packages: { dist: { format: 'register', defaultExtension: 'js' } } });
-     System.import('dist/main').then(null, console.error.bind(console));
+     System.import('dist/main');
   </script>
 </head>
 <body>
-  <app class="gs-com">
-    Loading...
-  </app>
+  <greatsql class="gs-com">
+    <div class="welcome">
+      Welcome to great sql.<br/>I'm loading now ...
+    </div>
+  </greatsql>
 </body>
 </html>

@@ -12,8 +12,17 @@ html, body {
 
 /* page style */
 
+.welcome {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
+  position: relative;
+  top: 45%;
+}
+
 body {
-    background: #EFEFEF;
+    background: #FFFDFA;
 }
 
 h3 {
