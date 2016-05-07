@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "lite-server",
-    "typings-install": "typings install"
+    "dev": "concurrently \"npm run tsc:w\" \"npm run lite\"",
+    "lite": "lite-server",
+    "typings-install": "typings install",
+    "tsc:w": "tsc -w"
   },
   "dependencies": {
     "angular2": "^2.0.0-beta.15",
@@ -15,6 +17,7 @@
     "zone.js": "^0.6.10"
   },
   "devDependencies": {
+    "concurrently": "^2.0.0",
     "lite-server": "^2.1.0",
     "typings":"^0.7.9"
   }
