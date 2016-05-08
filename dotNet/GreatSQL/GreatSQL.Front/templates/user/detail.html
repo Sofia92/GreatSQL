@@ -21,10 +21,15 @@
     </div>
     <div class="form-group">
         <label for="group" class="control-label col-sm-2 col-md-1 text-left">Group</label>
-        <div class="col-sm-9 col-md-10">
+        <div class="col-sm-8 col-md-9">
             <select name="group" id="group" class="form-control" [(ngModel)]="user.RuleGroupID">
                 <option *ngFor="#group of groups" [value]="group.ID" (click)="user.RuleGroup = group">{{group.Name}}</option>
             </select>
+        </div>
+        <div class="col-sm-1 col-md-1">
+            <div class="checkbox">
+                <a href="detail.html">编辑</a>
+            </div>
         </div>
     </div>
     <div class="row">
