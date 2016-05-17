@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Great SQL</title>
-  <base href="/">
+    <meta charset="utf-8"/>
+    <title>Great SQL</title>
+    <base href="/">
 
-  <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap-theme.css" type="text/css"/>
-  <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/bootstrap/3.3.6/css/bootstrap-theme.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/main.css" type="text/css"/>
 
-  <script src="assets/jquery/2.2.2/jquery-2.2.2.js"></script>
-  <script src="assets/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="node_modules/typescript/lib/typescript.js"></script>
 
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="assets/jquery/2.2.2/jquery-2.2.2.js"></script>
+    <script src="assets/bootstrap/3.3.6/js/bootstrap.js"></script>
 
-  <script>
-     System.config({ packages: { dist: { format: 'register', defaultExtension: 'js' } } });
-     System.import('main');
-  </script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            packages: {
+                'pages': {defaultExtension: 'ts'},
+                'services': {defaultExtension: 'ts'},
+                'models': {defaultExtension: 'ts'}
+            }
+        });
+        System.import('./main.ts').then(null, console.error.bind(console));
+    </script>
 </head>
 <body>
-  <greatsql class="gs-com">
+<greatsql class="gs-com">
     <div class="welcome">
-      Welcome to great sql.<br/>I'm loading now ...
+        Welcome to great sql.<br/>I'm loading now ...
     </div>
-  </greatsql>
+</greatsql>
 </body>
 </html>
