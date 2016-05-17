@@ -3,7 +3,7 @@ import { Router } from 'angular2/router';
 
 @Component({
   selector: 'login.gs-com',
-  templateUrl: 'templates/login.html'
+  templateUrl: 'login.html'
 })
 export default class LoginComponent {
   username:string;

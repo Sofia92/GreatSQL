@@ -1,15 +1,15 @@
 import {Component, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import SqlListComponent from './sql.list.component';
-import SqlDetailComponent from './sql.detail.component';
-import UserListComponent from './user.list.component';
-import UserDetailComponent from './user.detail.component';
+import SqlListComponent from './sql/sql.list.component';
+import SqlDetailComponent from './sql/sql.detail.component';
+import UserListComponent from './user/user.list.component';
+import UserDetailComponent from './user/user.detail.component';
 
 @Component({
     selector: 'app.gs-com.container-fluid',
-    templateUrl: 'templates/app.html',
-    styleUrls: ['styles/app.css'],
+    templateUrl: 'app.html',
+    styleUrls: ['../styles/app.css'],
     encapsulation: ViewEncapsulation.None,
     directives: [ROUTER_DIRECTIVES]
 })

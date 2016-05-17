@@ -1,7 +1,12 @@
 module.exports = {
     server: {
-        middleware: {
-            2: null
-        }
+        middleware: [
+            function (req, res, next) {
+                var url = req.url;
+                if (!url.endsWith(".js"))
+                    next();
+                
+            }
+        ]
     }
 };
