@@ -2,8 +2,8 @@ import { bootstrap } from 'angular2/platform/browser';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { Component } from 'angular2/core';
 
-import LoginComponent from './views/login.component';
-import AppComponent from './views/app.component';
+import LoginComponent from './pages/login.component';
+import AppComponent from './pages/app.component';
 
 @Component({
   selector: 'greatsql.gs-com',
